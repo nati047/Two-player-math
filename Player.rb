@@ -1,4 +1,5 @@
 class Player 
+  attr_reader :name, :lives
   def initialize(name)
     @name = name
     @lives = 3
@@ -8,4 +9,11 @@ class Player
     @lives -= 1
   end
 
+  def lost 
+    if @lives == 0 
+      return true
+    else
+      return false
+    end    
+  end  
 end

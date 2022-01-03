@@ -1,14 +1,16 @@
-class Game
-  
-  def initialize(current_player)
-    @current_player = current_player
-    @num1 = rand(20)
-    @num2 = rand(20)
-    @solution = @num1 + @num2
+class Game 
+
+  def initialize
+    @p1 = Player.new("Player 1")
+    @p2 = Player.new("Player 2")
   end
   
-  def question_string 
-    "what is #{@num1} plus #{@num2}?"
-  end
+  def play 
+    turn = Turn.new(@p1, @p2)
+    until (@p1.lost || @p2.lost) do
+      turn.execute
+      turn.switch_player
+    end
+  end    
 
 end  
